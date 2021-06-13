@@ -1,0 +1,44 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+{%load static%}
+
+<div class="row justify-content-center my-3">
+    <div class="col-5">
+      <img src="{% static 'portfolio/Profile.jpg' %}" class="img-fluid">
+    </div>
+</div>
+
+
+<div class="row justify-content-center mb-3">
+    <div class="col-md-9">
+      <p id="hometext" class="font-weight-bold">I am working as a software engineer for 2 years. Highly flexible individual with sound 
+        understanding of computer languages like Python, Powershell, 
+        MySQL, Django with zeal to learn from every task and enhance 
+        my problem-solving skills😊</p>
+    </div>
+  </div>
+
+<h2 class="mt-5">Portfolio</h2>
+    <hr>
+    <div class="row">
+        {% for project in projects %}
+            <div class="col-lg-4 col-md-6">
+
+            {% if project.url %}
+                <a href="{{ project.url }}">
+                <img src="{{ project.image.url }}" class="img-fluid mb-2">
+                </a>
+            {% else %}
+
+            <img src="{{ project.image.url }}" class="img-fluid mb-2">
+            {% endif %}
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
